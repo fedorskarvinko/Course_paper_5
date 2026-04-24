@@ -1,6 +1,7 @@
 import os
 from datetime import timedelta
 from pathlib import Path
+
 from celery.schedules import crontab
 from dotenv import load_dotenv
 
@@ -15,8 +16,6 @@ DEBUG = True if os.getenv("DEBUG") == "True" else False
 ALLOWED_HOSTS = []
 
 
-
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -29,8 +28,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "django_filters",
-    'users',
-    'habits',
+    "users",
+    "habits",
 ]
 
 MIDDLEWARE = [
@@ -64,7 +63,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -75,7 +73,6 @@ DATABASES = {
         "PORT": os.getenv("DATABASE_PORT", default="5432"),
     }
 }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -92,7 +89,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
 
 
 LANGUAGE_CODE = "en-us"
@@ -129,13 +125,13 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_BEAT_SCHEDULE = {
-    'send-reminders-every-minute': {
-        'task': 'habits.tasks.check_habits_and_notify',
-        'schedule': 60.0,
+    "send-reminders-every-minute": {
+        "task": "habits.tasks.check_habits_and_notify",
+        "schedule": 60.0,
     },
 }
 
-TELEGRAM_BOT_API= os.getenv("TELEGRAM_BOT_API")
+TELEGRAM_BOT_API = os.getenv("TELEGRAM_BOT_API")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
