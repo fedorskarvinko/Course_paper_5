@@ -3,11 +3,10 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-
 from .models import Habit
 from .serializers import HabitSerializer
-from .paginators import HabitPagination
-from .permissions import IsOwner
+from users.permissions import IsOwner
+
 
 class HabitViewSet(viewsets.ModelViewSet):
     serializer_class = HabitSerializer
