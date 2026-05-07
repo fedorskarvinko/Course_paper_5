@@ -205,3 +205,8 @@ database.ini
 
 reports/
 test_report.json
+*.pyc
+.coverage
+htmlcov/
+postgres_data/
+redis_data/
